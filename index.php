@@ -2,6 +2,7 @@
 
 use App\Controllers\DashboardController;
 use App\Controllers\KhoaController;
+use App\Controllers\LopController;
 use App\Controllers\MonHocController;
 use App\Controllers\SinhVienController;
 
@@ -88,6 +89,10 @@ switch ($url) {
     case 'sinh-vien/delete':
         $act = new SinhVienController();
         $act->remove();
+        break;
+    case 'lop':
+        $act = new LopController();
+        $act->index();
         break;
     default:
         echo 'Đường dẫn bạn truy cập không tồn tại';

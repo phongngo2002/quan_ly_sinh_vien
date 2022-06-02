@@ -31,6 +31,13 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="<?= BASE_URL; ?>/lop">
+                <i class="icon-check menu-icon"></i>
+                <span class="menu-title">Lớp</span>
+                <span class="badge badge-danger"></span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="<?= BASE_URL; ?>/mon-hoc">
                 <i class="icon-check menu-icon"></i>
                 <span class="menu-title">Môn học</span>

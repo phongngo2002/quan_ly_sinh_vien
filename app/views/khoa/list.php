@@ -3,7 +3,7 @@
         <div class="card-body">
             <h4 class="card-title">Quản lý khoa</h4>
             <div class="table-responsive">
-                <table class="table">
+                <table class="table text-center">
                     <thead>
                         <tr>
                             <th>Mã khoa</th>
