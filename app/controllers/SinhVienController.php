@@ -25,6 +25,7 @@ class SinhVienController
     public function add_form()
     {
         $ds_lop = Lop::all();
+        $ma_sv_moi = SinhVien::rawQuery('select max(id) max_id from sinh_vien order by id desc')->first()->max_id;
         $VIEW_PAGE = './app/views/sinh_vien/add.php';
 
         include_once './app/views/layouts/main.php';
@@ -47,7 +48,9 @@ class SinhVienController
                 'ngay_sinh' => $_REQUEST['ngay_sinh'],
                 'gioi_tinh' => $_REQUEST['gioi_tinh'],
                 'anh_dai_dien' => $img,
-                'ma_lop' => $_REQUEST['ma_lop']
+                'ma_lop' => $_REQUEST['ma_lop'],
+                'ten_dang_nhap' => $_REQUEST['ten_tai_khoan'],
+                'mat_khau' => $_REQUEST['mat_khau']
             ]
         );
         header('location: ' . BASE_URL . '/sinh-vien');
@@ -55,6 +58,7 @@ class SinhVienController
 
     public function edit_form()
     {
+        $ma_sv_moi = SinhVien::rawQuery('select max(id) max_id from sinh_vien order by id desc')->first()->max_id;
         $sv = SinhVien::where(['id', '=', $_GET['id']])->first();
         $ds_lop = Lop::all();
         $VIEW_PAGE = './app/views/sinh_vien/edit.php';
@@ -79,7 +83,9 @@ class SinhVienController
                 'ngay_sinh' => $_REQUEST['ngay_sinh'],
                 'gioi_tinh' => $_REQUEST['gioi_tinh'],
                 'anh_dai_dien' => $img,
-                'ma_lop' => $_REQUEST['ma_lop']
+                'ma_lop' => $_REQUEST['ma_lop'],
+                'ten_dang_nhap' => $_REQUEST['ten_tai_khoan'],
+                'mat_khau' => $_REQUEST['mat_khau']
             ]
         );
         header('location: ' . BASE_URL . '/sinh-vien');

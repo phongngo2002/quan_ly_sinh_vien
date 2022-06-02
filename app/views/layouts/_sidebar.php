@@ -45,7 +45,7 @@
             </a>
         </li>
         <li class="nav-item d-none d-lg-block">
-            <a class="nav-link">
+            <a class="nav-link" href="<?= BASE_URL; ?>/danh-sach-diem">
                 <i class="icon-layers menu-icon"></i>
                 <span class="menu-title">Danh sách điểm</span>
                 <span class="badge badge-warning"></span>
