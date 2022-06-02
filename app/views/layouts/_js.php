@@ -19,4 +19,5 @@
 <script src="<?= BASE_URL; ?>\public\vendors\sweetalert2\sweetalert2.min.js"></script>
 <script src="<?= BASE_URL; ?>\public\vendors\jquery.avgrund\jquery.avgrund.min.js"></script>
 <script src="<?= BASE_URL; ?>\public\js\alerts.js"></script>
-  <script src="<?= BASE_URL; ?>\public\js\avgrund.js"></script>
+<script src="<?= BASE_URL; ?>\public\js\avgrund.js"></script>
+<script src="<?= BASE_URL; ?>\public\js\file-upload.js"></script>

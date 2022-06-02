@@ -3,6 +3,8 @@
 use App\Controllers\DashboardController;
 use App\Controllers\KhoaController;
 use App\Controllers\MonHocController;
+use App\Controllers\SinhVienController;
+
 session_start();
 require_once './commons/helpers.php';
 require_once './vendor/autoload.php';
@@ -61,6 +63,30 @@ switch ($url) {
         break;
     case 'mon-hoc/delete':
         $act = new MonHocController();
+        $act->remove();
+        break;
+    case 'sinh-vien':
+        $act = new SinhVienController();
+        $act->index();
+        break;
+    case 'sinh-vien/create':
+        $act = new SinhVienController();
+        $act->add_form();
+        break;
+    case 'sinh-vien/save-create':
+        $act = new SinhVienController();
+        $act->save_create();
+        break;
+    case 'sinh-vien/edit':
+        $act = new SinhVienController();
+        $act->edit_form();
+        break;
+    case 'sinh-vien/save-edit':
+        $act = new SinhVienController();
+        $act->save_edit();
+        break;
+    case 'sinh-vien/delete':
+        $act = new SinhVienController();
         $act->remove();
         break;
     default:

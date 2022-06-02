@@ -18,7 +18,7 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?=BASE_URL?>">
+            <a class="nav-link" href="<?= BASE_URL ?>">
                 <i class="icon-rocket menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
                 <span class="badge badge-success"></span>
@@ -38,7 +38,7 @@
             </a>
         </li>
         <li class="nav-item d-none d-lg-block">
-            <a class="nav-link">
+            <a class="nav-link" href="<?= BASE_URL; ?>/sinh-vien">
                 <i class="icon-layers menu-icon"></i>
                 <span class="menu-title">Sinh Viên</span>
                 <span class="badge badge-warning"></span>
