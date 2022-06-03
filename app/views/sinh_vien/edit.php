@@ -8,7 +8,7 @@
                 <div class="form-group">
                     <label for="gioi_tinh">Mã sinh viên</label>
                     <div class="">
-                        <input type="text" class="form-control" id="ma_sv" value="<?= 'PH' . $sv->id; ?>" disabled>
+                        <input type="text" class="form-control" id="ma_sv" name="ma_sv" value="<?= $sv->ma_sv; ?>" disabled>
                     </div>
                 </div>
                 <div class="row">
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success mr-2">Lưu</button>
-                <button class="btn btn-light">Hủy</button>
+                <a href="<?= BASE_URL . '/sinh-vien' ?>"> <button type="button" class="btn btn-light">Hủy</button></a>
             </form>
         </div>
     </div>
@@ -120,7 +120,7 @@
             last += arr_ten[index];
         }
         console.log(first, last);
-        let string = last + '' + first + 'ph' + ma_sv.value.slice(2,ma_sv.value.length);
+        let string = last + '' + first + 'ph' + ma_sv.value.slice(2, ma_sv.value.length);
         ten_tai_khoan.value = removeVietnameseTones(string.toLowerCase());
     }
 </script>

@@ -15,7 +15,7 @@ class SinhVienController
             $ma = $_GET['ma_khoa'];
             $ds_sv =
                 SinhVien::rawQuery(
-                    "select sinh_vien.id id,ma_lop,ho_dem,ten,ngay_sinh,anh_dai_dien,gioi_tinh from sinh_vien 
+                    "select sinh_vien.id id,ma_sv,ma_lop,ho_dem,ten,ngay_sinh,anh_dai_dien,gioi_tinh from sinh_vien 
             join lop 
             on sinh_vien.ma_lop = lop.id
             join khoa
@@ -38,7 +38,8 @@ class SinhVienController
 
     public function add_form()
     {
-        $ma_sv = get_ma_sv(SinhVien::all());
+        $max_id = SinhVien::rawQuery('select max(id) max_id from sinh_vien')->first()->max_id;
+        $ma_sv = get_ma_sv($max_id + 1);
         $ds_lop = Lop::all();
         $ma_sv_moi = SinhVien::rawQuery('select max(id) max_id from sinh_vien order by id desc')->first()->max_id;
         $VIEW_PAGE = './app/views/sinh_vien/add.php';
@@ -56,9 +57,8 @@ class SinhVienController
             $img = 'avatar.jpg';
         }
         $model = new SinhVien();
-        $model->insert(
+        $model =  $model->insert(
             [
-                'id' => get_ma_sv(SinhVien::all()),
                 'ho_dem' => $_REQUEST['ho_dem'],
                 'ten' => $_REQUEST['ten'],
                 'ngay_sinh' => $_REQUEST['ngay_sinh'],
@@ -66,9 +66,17 @@ class SinhVienController
                 'anh_dai_dien' => $img,
                 'ma_lop' => $_REQUEST['ma_lop'],
                 'ten_dang_nhap' => $_REQUEST['ten_tai_khoan'],
-                'mat_khau' => $_REQUEST['mat_khau']
+                'mat_khau' => $_REQUEST['mat_khau'],
+                'ma_sv' => $_REQUEST['ma_sv']
             ]
         );
+        $sv_moi = SinhVien::where(['id', '=', $model->id])
+            ->first()
+            ->update(
+                [
+                    'ma_sv' => 'PH' . get_ma_sv($model->id)
+                ]
+            );
         header('location: ' . BASE_URL . '/sinh-vien');
     }
 

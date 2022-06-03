@@ -7,10 +7,10 @@ function quan_he($model, $id)
     return $model::where('id', '=', $id)->first();
 }
 
-function get_ma_sv($ds)
+function get_ma_sv($id)
 {
-    $tong_sv = count($ds) + 1;
-    $arr_so = array_map('intval', str_split($tong_sv));
+    $stt = $id;
+    $arr_so = array_map('intval', str_split($stt));
     $arr = ['0', '0', '0', '0', '0'];
     $temp = 4;
     for ($i = 0; $i < count($arr_so); $i++) {

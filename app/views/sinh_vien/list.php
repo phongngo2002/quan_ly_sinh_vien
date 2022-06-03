@@ -37,7 +37,7 @@
                     <?php
                     foreach ($ds_sv as $a) : ?>
                         <tr>
-                            <td><?= 'PH'.$a->id; ?></td>
+                            <td><?= $a->ma_sv;?></td>
                             <td><?= $a->ho_dem . ' ' . $a->ten; ?></td>
                             <td><?= $a->ngay_sinh; ?></td>
                             <td><img src="<?= BASE_URL . '/storage/images/' . $a->anh_dai_dien; ?>" alt="" class="" style="width: 125px; height: 150px;border-radius: 0;"></td>

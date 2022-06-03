@@ -46,6 +46,7 @@
                                     </span>
                                 </td>
                             </tr>
+                            <?php $i +=1; ?>
                         <?php endforeach; ?>
                     </tbody>
                 </table>

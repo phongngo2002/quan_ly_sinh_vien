@@ -8,7 +8,7 @@
                 <div class="form-group">
                     <label for="gioi_tinh">Mã sinh viên</label>
                     <div class="">
-                        <input type="text" class="form-control" id="ma_sv" value="<?= 'PH' . $ma_sv; ?>" disabled>
+                        <input type="text" class="form-control" id="ma_sv" name="ma_sv" value="<?= 'PH' . $ma_sv; ?>" readonly>
                     </div>
                 </div>
                 <div class="row">
@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success mr-2">Tạo mới</button>
-                <button class="btn btn-light">Hủy</button>
+                <a href="<?= BASE_URL . '/sinh-vien' ?>"> <button type="button" class="btn btn-light">Hủy</button></a>
             </form>
         </div>
     </div>
