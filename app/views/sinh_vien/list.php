@@ -9,11 +9,16 @@
                 <div>
                     <button class="btn btn-dark my-3" id="btn-reset">Xóa lựa chọn</button>
                     <select class="form-control" id="lop" name="lop">
-                        <?php foreach ($ds_lop as $a) : ?>
-                            <option value="<?= $a->id ?>"><?= $a->ten_lop; ?></option>
+                        <option value="">Lựa chọn chuyên ngành học</option>
+                        <?php foreach ($ds_khoa as $a) : ?>
+                            <option value="<?= $a->id ?>" <?= isset($_GET['ma_khoa']) && $_GET['ma_khoa'] == $a->id ? 'selected' : ''; ?>><?= $a->ten_khoa; ?></option>
                         <?php endforeach; ?>
 
                     </select>
+
+                </div>
+                <div class="mt-2">
+                    <input type="text" class="form-control" id="search_name" name="" placeholder="Nhập mã sinh viên của sinh viên muốn tìm ">
                 </div>
             </div>
             <table class="table text-center">
@@ -32,7 +37,7 @@
                     <?php
                     foreach ($ds_sv as $a) : ?>
                         <tr>
-                            <td><?= $a->id; ?></td>
+                            <td><?= 'PH'.$a->id; ?></td>
                             <td><?= $a->ho_dem . ' ' . $a->ten; ?></td>
                             <td><?= $a->ngay_sinh; ?></td>
                             <td><img src="<?= BASE_URL . '/storage/images/' . $a->anh_dai_dien; ?>" alt="" class="" style="width: 125px; height: 150px;border-radius: 0;"></td>
@@ -86,10 +91,14 @@
     });
     const select = document.getElementById('lop');
     select.addEventListener('change', () => {
-        document.location = 'http://localhost/projects/quan_ly_sinh_vien/sinh-vien?ma_lop=' + (+select.value);
+        document.location = 'http://localhost/projects/quan_ly_sinh_vien/sinh-vien?ma_khoa=' + (+select.value);
     });
 
     document.getElementById('btn-reset').onclick = function() {
         document.location = 'http://localhost/projects/quan_ly_sinh_vien/sinh-vien';
+    }
+    const search = document.getElementById('search_name');
+    search.onchange = function() {
+        document.location = 'http://localhost/projects/quan_ly_sinh_vien/sinh-vien?ma_sv=' + search.value;
     }
 </script>

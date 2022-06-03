@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Khoa;
 use App\Models\Lop;
 use App\Models\SinhVien;
 
@@ -9,13 +10,26 @@ class SinhVienController
 {
     public function index()
     {
-        $ds_sv =
-            isset($_GET['ma_lop'])
-            ?
-            SinhVien::where(['ma_lop', '=', $_GET['ma_lop']])->get()
-            :
-            SinhVien::all();
-        $ds_lop = Lop::all();
+
+        if (isset($_GET['ma_khoa'])) {
+            $ma = $_GET['ma_khoa'];
+            $ds_sv =
+                SinhVien::rawQuery(
+                    "select sinh_vien.id id,ma_lop,ho_dem,ten,ngay_sinh,anh_dai_dien,gioi_tinh from sinh_vien 
+            join lop 
+            on sinh_vien.ma_lop = lop.id
+            join khoa
+            on lop.ma_khoa = khoa.id
+            where ma_khoa = '$ma'
+            "
+                )->get();
+        } else if (isset($_GET['ma_sv'])) {
+            $ma_sv = explode('ph', strtolower($_GET['ma_sv']));
+            $ds_sv = SinhVien::where(['id', '=', $ma_sv[1]])->get();
+        } else {
+            $ds_sv = SinhVien::all();
+        }
+        $ds_khoa = Khoa::all();
         $get_one_class = fn ($id) => Lop::where(['id', '=', $id])->first();
         $VIEW_PAGE = './app/views/sinh_vien/list.php';
 
@@ -24,6 +38,7 @@ class SinhVienController
 
     public function add_form()
     {
+        $ma_sv = get_ma_sv(SinhVien::all());
         $ds_lop = Lop::all();
         $ma_sv_moi = SinhVien::rawQuery('select max(id) max_id from sinh_vien order by id desc')->first()->max_id;
         $VIEW_PAGE = './app/views/sinh_vien/add.php';
@@ -43,6 +58,7 @@ class SinhVienController
         $model = new SinhVien();
         $model->insert(
             [
+                'id' => get_ma_sv(SinhVien::all()),
                 'ho_dem' => $_REQUEST['ho_dem'],
                 'ten' => $_REQUEST['ten'],
                 'ngay_sinh' => $_REQUEST['ngay_sinh'],
@@ -68,6 +84,7 @@ class SinhVienController
 
     public function save_edit()
     {
+
         $sv = SinhVien::where(['id', '=', $_REQUEST['id']])->first();
         $img = $_FILES["anh_dai_dien"]["name"];
         $dir_path = $_SERVER["DOCUMENT_ROOT"] . '/projects/quan_ly_sinh_vien/storage/images/';

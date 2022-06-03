@@ -8,7 +8,7 @@
                 <div class="form-group">
                     <label for="gioi_tinh">Mã sinh viên</label>
                     <div class="">
-                        <input type="text" class="form-control" id="ma_sv" value="<?= 'PH'.$ma_sv_moi + 1; ?>" disabled>
+                        <input type="text" class="form-control" id="ma_sv" value="<?= 'PH' . $ma_sv; ?>" disabled>
                     </div>
                 </div>
                 <div class="row">
@@ -116,7 +116,7 @@
             last += arr_ten[index];
         }
         console.log(first, last);
-        let string = last + '' + first + 'ph' + ma_sv.value.slice(2, ma_sv.value.length);
+        let string = last + '' + first + ma_sv.value;
         ten_tai_khoan.value = removeVietnameseTones(string.toLowerCase());
     }
 </script>

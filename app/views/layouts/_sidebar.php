@@ -3,16 +3,16 @@
         <li class="nav-item nav-profile">
             <div class="nav-link">
                 <div class="profile-image">
-                    <img src="<?= BASE_URL; ?>\public\images\faces\face10.jpg" alt="image">
+                    <img src="<?= BASE_URL; ?>\storage\images\ba1f7ef9eb45041b5d54.jpg" alt="image">
                     <span class="online-status online"></span>
                     <!--change class online to offline or busy as needed-->
                 </div>
                 <div class="profile-name">
                     <p class="name">
-                        Marina Michel
+                        Ánh Lê Ngọc
                     </p>
                     <p class="designation">
-                        Super Admin
+                        Quản trị viên
                     </p>
                 </div>
             </div>
