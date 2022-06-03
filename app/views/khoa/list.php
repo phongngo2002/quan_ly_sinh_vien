@@ -6,16 +6,18 @@
                 <table class="table text-center">
                     <thead>
                         <tr>
-                            <th>Mã khoa</th>
+                            <th>STT</th>
                             <th>Tên khoa</th>
                             <th>Số điện thoại</th>
                             <th><a href="<?= BASE_URL . '/khoa/create'; ?>"><button class="btn btn-primary">Thêm mới khoa</button></a></th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i = 1; ?>
                         <?php foreach ($ds_khoa as $a) : ?>
+
                             <tr>
-                                <td><?= 'KH-' . $a->id; ?></td>
+                                <td><?= $i;?></td>
                                 <td><?= $a->ten_khoa; ?></td>
                                 <td><?= $a->dien_thoai; ?></td>
                                 <td>

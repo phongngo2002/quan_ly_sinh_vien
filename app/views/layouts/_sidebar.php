@@ -26,34 +26,34 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?= BASE_URL; ?>/khoa">
-                <i class="icon-shield menu-icon"></i>
+                <i class="icon-graduation menu-icon"></i>
                 <span class="menu-title">Khoa</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?= BASE_URL; ?>/lop">
-                <i class="icon-check menu-icon"></i>
+                <i class="icon-home menu-icon"></i>
                 <span class="menu-title">Lớp</span>
                 <span class="badge badge-danger"></span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="<?= BASE_URL; ?>/mon-hoc">
-                <i class="icon-check menu-icon"></i>
+                <i class="icon-notebook menu-icon"></i>
                 <span class="menu-title">Môn học</span>
                 <span class="badge badge-danger"></span>
             </a>
         </li>
-        <li class="nav-item d-none d-lg-block">
+        <li class="nav-item">
             <a class="nav-link" href="<?= BASE_URL; ?>/sinh-vien">
-                <i class="icon-layers menu-icon"></i>
+                <i class="icon-user menu-icon"></i>
                 <span class="menu-title">Sinh Viên</span>
                 <span class="badge badge-warning"></span>
             </a>
         </li>
-        <li class="nav-item d-none d-lg-block">
+        <li class="nav-item">
             <a class="nav-link" href="<?= BASE_URL; ?>/danh-sach-diem">
-                <i class="icon-layers menu-icon"></i>
+                <i class="icon-calendar menu-icon"></i>
                 <span class="menu-title">Danh sách điểm</span>
                 <span class="badge badge-warning"></span>
             </a>

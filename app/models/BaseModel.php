@@ -27,13 +27,14 @@ class BaseModel
         $cols .= ") ";
         $vals .= ") ";
         $this->queryBuilder .= $cols . ' values ' . $vals;
-        $stmt = $this->getConnect()
-            ->prepare($this->queryBuilder);
+        $connect = $this->getConnect();
+        $stmt = $connect->prepare($this->queryBuilder);
         foreach ($arr as $key => &$value) {
             $stmt->bindParam(":$key", $value);
         }
-        // var_dump($this->queryBuilder);die;
         $stmt->execute();
+        $lastInsertId = $connect->lastInsertId();
+        return self::where(['id', '=', $lastInsertId])->first();
     }
     public function update($arr)
     {

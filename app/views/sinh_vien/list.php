@@ -36,7 +36,7 @@
                             <td><?= $a->ho_dem . ' ' . $a->ten; ?></td>
                             <td><?= $a->ngay_sinh; ?></td>
                             <td><img src="<?= BASE_URL . '/storage/images/' . $a->anh_dai_dien; ?>" alt="" class="" style="width: 125px; height: 150px;border-radius: 0;"></td>
-                            <td><?= $a->gioi_tinh == 0 ? 'Nữ' : 'Nam'; ?></td>
+                            <td><?= $a->gioi_tinh == 1 ? 'Nữ' : 'Nam'; ?></td>
                             <td><?= $get_one_class($a->ma_lop)->ten_lop; ?></td>
                             <td>
                                 <a href="<?= BASE_URL . '/sinh-vien/edit?id=' . $a->id; ?>"><button class="btn btn-info">Cập Nhật</button></a>
