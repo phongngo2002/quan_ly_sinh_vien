@@ -94,6 +94,26 @@ switch ($url) {
         $act = new LopController();
         $act->index();
         break;
+    case 'lop/create':
+        $act = new LopController();
+        $act->add_form();
+        break;
+    case 'lop/save-create':
+        $act = new LopController();
+        $act->save_create();
+        break;
+    case 'lop/edit':
+        $act = new LopController();
+        $act->edit_form();
+        break;
+    case 'lop/save-edit':
+        $act = new LopController();
+        $act->save_edit();
+        break;
+    case 'lop/delete':
+        $act = new LopController();
+        $act->remove();
+        break;
     default:
         echo 'Đường dẫn bạn truy cập không tồn tại';
         break;
