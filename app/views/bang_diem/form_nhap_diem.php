@@ -25,7 +25,7 @@
                     <input type="text" class="form-control" id="mon_hoc" name="mon_hoc" disabled value="<?= $mon_hoc->ten_mon_hoc; ?>">
                 </div>
                 <button type="submit" class="btn btn-success mr-2">Lưu</button>
-                <a href="<?= BASE_URL . '/danh-sach-diem/chi-tiet?ma_mon_hoc='.$mon_hoc->id; ?>"> <button type="button" class="btn btn-light">Hủy</button></a>
+                <a href="<?= BASE_URL . '/danh-sach-diem/chi-tiet?ma_mon_hoc=' . $mon_hoc->id; ?>"> <button type="button" class="btn btn-light">Hủy</button></a>
             </form>
         </div>
     </div>
