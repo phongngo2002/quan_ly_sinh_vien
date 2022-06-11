@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\DashboardController;
+use App\Controllers\DiemThiController;
 use App\Controllers\KhoaController;
 use App\Controllers\LopController;
 use App\Controllers\MonHocController;
@@ -113,6 +114,30 @@ switch ($url) {
     case 'lop/delete':
         $act = new LopController();
         $act->remove();
+        break;
+    case 'danh-sach-diem':
+        $act = new DiemThiController();
+        $act->index();
+        break;
+    case 'danh-sach-diem/chi-tiet':
+        $act = new DiemThiController();
+        $act->detail();
+        break;
+    case 'danh-sach-diem/nhap-diem':
+        $act = new DiemThiController();
+        $act->form_nhap();
+        break;
+    case 'danh-sach-diem/save_create':
+        $act = new DiemThiController();
+        $act->save_create();
+        break;
+    case 'danh-sach-diem/sua-diem':
+        $act = new DiemThiController();
+        $act->edit_form();
+        break;
+    case 'danh-sach-diem/save_edit':
+        $act = new DiemThiController();
+        $act->save_edit();
         break;
     default:
         echo 'Đường dẫn bạn truy cập không tồn tại';
