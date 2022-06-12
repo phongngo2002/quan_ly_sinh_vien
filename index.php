@@ -5,6 +5,7 @@ use App\Controllers\DiemThiController;
 use App\Controllers\KhoaController;
 use App\Controllers\LopController;
 use App\Controllers\MonHocController;
+use App\Controllers\QuanTriVienController;
 use App\Controllers\SinhVienController;
 
 session_start();
@@ -137,6 +138,26 @@ switch ($url) {
         break;
     case 'danh-sach-diem/save_edit':
         $act = new DiemThiController();
+        $act->save_edit();
+        break;
+    case 'quan-tri-vien':
+        $act = new QuanTriVienController();
+        $act->index();
+        break;
+    case 'quan-tri-vien/create':
+        $act = new QuanTriVienController();
+        $act->add_form();
+        break;
+    case 'quan-tri-vien/save-create':
+        $act = new QuanTriVienController();
+        $act->save_create();
+        break;
+    case 'quan-tri-vien/edit':
+        $act = new QuanTriVienController();
+        $act->edit_form();
+        break;
+    case 'quan-tri-vien/save-edit':
+        $act = new QuanTriVienController();
         $act->save_edit();
         break;
     default:

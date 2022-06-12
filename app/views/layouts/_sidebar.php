@@ -52,6 +52,13 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="<?= BASE_URL; ?>/quan-tri-vien">
+                <i class="icon-user menu-icon"></i>
+                <span class="menu-title">Quản trị viên</span>
+                <span class="badge badge-warning"></span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="<?= BASE_URL; ?>/danh-sach-diem">
                 <i class="icon-calendar menu-icon"></i>
                 <span class="menu-title">Danh sách điểm</span>
