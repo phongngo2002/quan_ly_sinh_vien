@@ -4,13 +4,22 @@ namespace App\Controllers;
 
 use App\Models\Khoa;
 use App\Models\Lop;
+use App\Models\QuanTriVien;
 use App\Models\SinhVien;
 
 class SinhVienController
 {
+    public function __construct()
+    {
+        if (isset($_SESSION['id-login'])) {
+            $this->user = QuanTriVien::where(['id', '=', $_SESSION['id-login']])->first();
+        } else {
+            header('location: ' . BASE_URL . '/login');
+        }
+    }
     public function index()
     {
-
+        $user = $this->user;
         if (isset($_GET['ma_khoa'])) {
             $ma = $_GET['ma_khoa'];
             $ds_sv =
@@ -38,6 +47,7 @@ class SinhVienController
 
     public function add_form()
     {
+        $user = $this->user;
         $max_id = SinhVien::rawQuery('select max(id) max_id from sinh_vien')->first()->max_id;
         $ma_sv = get_ma_sv($max_id + 1);
         $ds_lop = Lop::all();
@@ -82,6 +92,7 @@ class SinhVienController
 
     public function edit_form()
     {
+        $user = $this->user;
         $ma_sv_moi = SinhVien::rawQuery('select max(id) max_id from sinh_vien order by id desc')->first()->max_id;
         $sv = SinhVien::where(['id', '=', $_GET['id']])->first();
         $ds_lop = Lop::all();

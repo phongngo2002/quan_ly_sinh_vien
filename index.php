@@ -3,6 +3,7 @@
 use App\Controllers\DashboardController;
 use App\Controllers\DiemThiController;
 use App\Controllers\KhoaController;
+use App\Controllers\LoginController;
 use App\Controllers\LopController;
 use App\Controllers\MonHocController;
 use App\Controllers\QuanTriVienController;
@@ -19,6 +20,18 @@ switch ($url) {
     case '/':
         $act = new DashboardController();
         $act->index();
+        break;
+    case 'login':
+        $act = new LoginController();
+        $act->index();
+        break;
+    case 'save-login':
+        $act = new LoginController();
+        $act->save_login();
+        break;
+    case 'logout':
+        $act = new LoginController();
+        $act->logout();
         break;
     case 'khoa':
         $act = new KhoaController();

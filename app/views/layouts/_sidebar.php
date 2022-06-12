@@ -9,7 +9,7 @@
                 </div>
                 <div class="profile-name">
                     <p class="name">
-                        Ánh Lê Ngọc
+                       <?=  $user->ho_dem.' '.$user->ten;?>
                     </p>
                     <p class="designation">
                         Quản trị viên
@@ -62,6 +62,12 @@
             <a class="nav-link" href="<?= BASE_URL; ?>/danh-sach-diem">
                 <i class="icon-calendar menu-icon"></i>
                 <span class="menu-title">Danh sách điểm</span>
+                <span class="badge badge-warning"></span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= BASE_URL; ?>/logout">
+                <span class="menu-title">Đằng xuất</span>
                 <span class="badge badge-warning"></span>
             </a>
         </li>

@@ -3,11 +3,22 @@
 namespace App\Controllers;
 
 use App\Models\MonHoc;
+use App\Models\QuanTriVien;
 
 class MonHocController
 {
+    public function __construct()
+    {
+        if (isset($_SESSION['id-login'])) {
+            $this->user = QuanTriVien::where(['id', '=', $_SESSION['id-login']])->first();
+        } else {
+            header('location: ' . BASE_URL . '/login');
+        }
+    }
+
     public function index()
     {
+        $user = $this->user;
         $ds_mon = MonHoc::all();
         $VIEW_PAGE = './app/views/mon_hoc/list.php';
 
@@ -16,6 +27,7 @@ class MonHocController
 
     public function add_form()
     {
+        $user = $this->user;
         $VIEW_PAGE = './app/views/mon_hoc/add.php';
 
         include_once './app/views/layouts/main.php';
@@ -36,6 +48,7 @@ class MonHocController
 
     public function edit_form()
     {
+        $user = $this->user;
         $model = MonHoc::where(['id', '=', $_GET['id']])->first();
         $VIEW_PAGE = './app/views/mon_hoc/edit.php';
 
@@ -53,7 +66,8 @@ class MonHocController
         header('location: ' . BASE_URL . '/mon-hoc');
     }
 
-    public function remove(){
+    public function remove()
+    {
         $model = MonHoc::destroy($_GET['id']);
         header('location: ' . BASE_URL . '/mon-hoc');
     }

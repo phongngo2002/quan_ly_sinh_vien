@@ -4,11 +4,22 @@ namespace App\Controllers;
 
 use App\Models\Khoa;
 use App\Models\Lop;
+use App\Models\QuanTriVien;
 
 class LopController
 {
+    public function __construct()
+    {
+        if (isset($_SESSION['id-login'])) {
+            $this->user = QuanTriVien::where(['id', '=', $_SESSION['id-login']])->first();
+        } else {
+            header('location: ' . BASE_URL . '/login');
+        }
+    }
+
     public function index()
     {
+        $user = $this->user;
         $ds_lop = null;
         if (isset($_GET['nam_nhap_hoc']) &&  isset($_GET['khoa'])) {
             $ds_lop =
@@ -34,6 +45,7 @@ class LopController
 
     public function add_form()
     {
+        $user = $this->user;
         $ds_khoa = Khoa::all();
         $VIEW_PAGE = './app/views/lop/add.php';
 
@@ -42,6 +54,7 @@ class LopController
 
     public function save_create()
     {
+
         $ten_khoa = Khoa::where(['id', '=', $_REQUEST['ma_khoa']])->first()->ten_khoa;
         $strings = vn_to_str(explode(" ", $ten_khoa));
         $ma_lop = "";
@@ -59,7 +72,6 @@ class LopController
             'si_so' => $_REQUEST['si_so'],
             'ma_khoa' => $_REQUEST['ma_khoa']
         ]);
-        var_dump($model->id);
         $update_lop = Lop::where(['id', '=', $model->id])->first();
         $update_lop->update([
             'ten_lop' => $ma_lop . '' . $model->id
@@ -70,6 +82,7 @@ class LopController
 
     public function edit_form()
     {
+        $user = $this->user;
         $ds_khoa = Khoa::all();
         $lop = Lop::where(['id', '=', $_GET['id']])->first();
         $VIEW_PAGE = './app/views/lop/edit.php';
@@ -91,7 +104,8 @@ class LopController
         header('location: ' . BASE_URL . '/lop');
     }
 
-    public function remove(){
+    public function remove()
+    {
         $model = Lop::destroy($_GET['id']);
         header('location: ' . BASE_URL . '/lop');
     }

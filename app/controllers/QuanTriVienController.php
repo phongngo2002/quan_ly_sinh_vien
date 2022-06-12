@@ -6,8 +6,18 @@ use App\Models\QuanTriVien;
 
 class QuanTriVienController
 {
+    public function __construct()
+    {
+        if (isset($_SESSION['id-login'])) {
+            $this->user = QuanTriVien::where(['id', '=', $_SESSION['id-login']])->first();
+        } else {
+            header('location: ' . BASE_URL . '/login');
+        }
+    }
+
     public function index()
     {
+        $user = $this->user;
         $ds_quan_tri = QuanTriVien::all();
         $VIEW_PAGE = './app/views/quan_tri_vien/list.php';
 
@@ -16,6 +26,7 @@ class QuanTriVienController
 
     public function add_form()
     {
+        $user = $this->user;
         $so_tk = count(QuanTriVien::all());
         $VIEW_PAGE = './app/views/quan_tri_vien/add.php';
 
@@ -39,6 +50,7 @@ class QuanTriVienController
 
     public function edit_form()
     {
+        $user = $this->user;
         $qtr_vien = QuanTriVien::where(['id', '=', $_GET['id']])->first();
         $VIEW_PAGE = './app/views/quan_tri_vien/edit.php';
 
