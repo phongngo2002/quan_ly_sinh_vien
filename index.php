@@ -8,6 +8,7 @@ use App\Controllers\LopController;
 use App\Controllers\MonHocController;
 use App\Controllers\QuanTriVienController;
 use App\Controllers\SinhVienController;
+use App\Controllers\SiteController;
 
 session_start();
 require_once './commons/helpers.php';
@@ -17,7 +18,7 @@ require_once './vendor/autoload.php';
 $url = isset($_GET['url']) ? $_GET['url'] : "/";
 
 switch ($url) {
-    case '/':
+    case '/admin':
         $act = new DashboardController();
         $act->index();
         break;
@@ -172,6 +173,10 @@ switch ($url) {
     case 'quan-tri-vien/save-edit':
         $act = new QuanTriVienController();
         $act->save_edit();
+        break;
+    case '/':
+        $act = new SiteController();
+        $act->index();
         break;
     default:
         echo 'Đường dẫn bạn truy cập không tồn tại';
