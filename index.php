@@ -18,7 +18,7 @@ require_once './vendor/autoload.php';
 $url = isset($_GET['url']) ? $_GET['url'] : "/";
 
 switch ($url) {
-    case '/admin':
+    case 'dashboard':
         $act = new DashboardController();
         $act->index();
         break;
@@ -177,6 +177,10 @@ switch ($url) {
     case '/':
         $act = new SiteController();
         $act->index();
+        break;
+    case 'bang-diem':
+        $act = new SiteController();
+        $act->diemSV();
         break;
     default:
         echo 'Đường dẫn bạn truy cập không tồn tại';

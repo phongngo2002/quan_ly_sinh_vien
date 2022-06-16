@@ -68,3 +68,12 @@ function vn_to_str($str)
 
     return $str;
 }
+
+function checkempty($bienCanCheck)
+{
+    $x = null;
+    if (isset($bienCanCheck)) {
+        $x =  $bienCanCheck;
+    }
+    return $x;
+}

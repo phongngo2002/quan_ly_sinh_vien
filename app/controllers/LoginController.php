@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\QuanTriVien;
+use App\Models\SinhVien;
 
 class LoginController
 {
@@ -18,15 +19,26 @@ class LoginController
             ->first();
         if ($model) {
             $_SESSION['id-login'] = $model->id;
-            header('location: ' . BASE_URL);
+            header('location: ' . BASE_URL . '/dashboard');
         } else {
-            header('location: ' . BASE_URL . '/login?loi-dang-nhap');
+            $model2 = SinhVien::where(['ten_dang_nhap', '=', $_REQUEST['ten_tai_khoan']])->andWhere(['mat_khau', '=', $_REQUEST['mat_khau']])->first();
+            if ($model2) {
+                $_SESSION['id-login-sv'] = $model2->id;
+                header('location: ' . BASE_URL);
+            } else {
+                header('location: ' . BASE_URL . '/login?loi-dang-nhap');
+            }
         }
     }
 
     public function logout()
     {
-        unset($_SESSION['id-login']);
-        header('location: ' . BASE_URL . '/login');
+        if (isset($_GET['sv'])) {
+            unset($_SESSION['id-login-sv']);
+            header('location: ' . BASE_URL);
+        } else {
+            unset($_SESSION['id-login']);
+            header('location: ' . BASE_URL . '/login');
+        }
     }
 }

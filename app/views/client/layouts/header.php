@@ -18,7 +18,7 @@
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="toolbar-login">
                         <div class="button">
-                            <a href="<?= BASE_URL . '/login' ?>" class="btn">Đăng nhập</a>
+                            <?= isset($user) ?   '<a href="" class="btn btn-primary">Hello ' . $user->ho_dem . ' ' . $user->ten . '</a> <a href="' . BASE_URL . '/logout?sv' . '" class="btn">Đăng xuất</a>' :  '  <a href="' . BASE_URL . '/login' . '" class="btn">Đăng nhập</a>' ?>
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                                 <li class="nav-item">
                                     <a href="about-us.html">Giới thiệu</a>
                                 </li>
-                                <li class="nav-item"><a href="javascript:void(0)">Bài viết</a></li>
+                                <li class="nav-item"><a href="<?= BASE_URL . '/bang-diem'; ?>">Bảng điểm của bạn</a></li>
                                 <li class="nav-item"><a href="javascript:void(0)">Liên hệ</a></li>
                             </ul>
                             <form class="d-flex search-form">
