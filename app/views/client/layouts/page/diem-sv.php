@@ -1,4 +1,5 @@
 <div class="container" style="margin-bottom: 250px;">
+<h4 class="alert alert-success">Bảng điểm của bạn</h4>
     <?php foreach ($diem_thi as $a) : ?>
     <?php $i = 1;?>
         <div class="box-diem">

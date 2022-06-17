@@ -176,10 +176,6 @@ switch ($url) {
         break;
     case '/':
         $act = new SiteController();
-        $act->index();
-        break;
-    case 'bang-diem':
-        $act = new SiteController();
         $act->diemSV();
         break;
     default:

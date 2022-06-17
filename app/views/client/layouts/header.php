@@ -41,14 +41,7 @@
                         </button>
                         <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                             <ul id="nav" class="navbar-nav ms-auto">
-                                <li class="nav-item"><a class="active" href="index.html">Trang chủ</a></li>
-                                <li class="nav-item"><a href="javascript:void(0)">Môn học</a></li>
-                                <li class="nav-item"><a href="javascript:void(0)">Sự kiện</a></li>
-                                <li class="nav-item">
-                                    <a href="about-us.html">Giới thiệu</a>
-                                </li>
-                                <li class="nav-item"><a href="<?= BASE_URL . '/bang-diem'; ?>">Bảng điểm của bạn</a></li>
-                                <li class="nav-item"><a href="javascript:void(0)">Liên hệ</a></li>
+                                <li class="nav-item"><a class="active" href="<?=BASE_URL?>">Trang chủ</a></li>
                             </ul>
                             <form class="d-flex search-form">
                                 <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">

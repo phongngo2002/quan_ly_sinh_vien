@@ -11,7 +11,7 @@
                             <th>Số sinh viên có điểm</th>
                             <th>Điểm trung bình</th>
                             <th>Tỷ lệ đạt (%)</th>
-                            <th></th>
+                            <th><a href="<?= BASE_URL . '/danh-sach-diem/nhap-diem'; ?>"><button class="btn btn-primary">Nhập điểm</button></a></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,7 +30,7 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-              
+
             </div>
         </div>
     </div>

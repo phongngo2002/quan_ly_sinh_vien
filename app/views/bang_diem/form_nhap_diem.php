@@ -19,13 +19,18 @@
                         <input type="number" class="form-control" id="diem_lan_2" name="diem_lan_2" value="0">
                     </div>
                 </div>
-                <input type="hidden" value="<?= $mon_hoc->id; ?>" name="ma_mon_hoc">
                 <div class="form-group">
                     <label for="mon_hoc">Môn học</label>
-                    <input type="text" class="form-control" id="mon_hoc" name="mon_hoc" disabled value="<?= $mon_hoc->ten_mon_hoc; ?>">
+                    <div class="">
+                        <select class="form-control" id="mon_hoc" name="mon_hoc">
+                            <?php foreach ($mon_hoc as $a) : ?>
+                                <option value="<?= $a->id; ?>"><?= $a->ten_mon_hoc; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-success mr-2">Lưu</button>
-                <a href="<?= BASE_URL . '/danh-sach-diem/chi-tiet?ma_mon_hoc=' . $mon_hoc->id; ?>"> <button type="button" class="btn btn-light">Hủy</button></a>
+                <a href="<?= isset($_GET['ma_mon_hoc']) ? BASE_URL . '/danh-sach-diem/chi-tiet?ma_mon_hoc=' . $_GET['ma_mon_hoc'] : BASE_URL . '/danh-sach-diem'; ?>"> <button type="button" class="btn btn-light">Hủy</button></a>
             </form>
         </div>
     </div>

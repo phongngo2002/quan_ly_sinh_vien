@@ -47,7 +47,11 @@ class DiemThiController
     public function form_nhap()
     {
         $user = $this->user;
-        $mon_hoc = MonHoc::where(['id', '=', $_GET['ma_mon_hoc']])->first();
+        if (isset($_GET['ma_mon_hoc'])) {
+            $mon_hoc = MonHoc::where(['id', '=', $_GET['ma_mon_hoc']])->get();
+        } else {
+            $mon_hoc = MonHoc::all();
+        }
         $VIEW_PAGE = './app/views/bang_diem/form_nhap_diem.php';
 
         include_once './app/views/layouts/main.php';
@@ -59,14 +63,14 @@ class DiemThiController
         $id_sv = SinhVien::where(['ma_sv', '=', $_REQUEST['ma_sv']])->first()->id;
         $model = $model->insert(
             [
-                'ma_mon_hoc' => $_REQUEST['ma_mon_hoc'],
+                'ma_mon_hoc' => $_REQUEST['mon_hoc'],
                 'ma_sv' => $id_sv,
                 'diem_lan_1' => $_REQUEST['diem_lan_1'],
                 'diem_lan_2' => $_REQUEST['diem_lan_2']
             ]
         );
 
-        header('location: ' . BASE_URL . '/danh-sach-diem/chi-tiet?ma_mon_hoc=' . $_REQUEST['ma_mon_hoc']);
+        header('location: ' . BASE_URL . '/danh-sach-diem/chi-tiet?ma_mon_hoc=' . $_REQUEST['mon_hoc']);
     }
 
     public function edit_form()
