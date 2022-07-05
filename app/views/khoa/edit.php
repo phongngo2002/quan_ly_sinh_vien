@@ -4,7 +4,7 @@
             <h4 class="card-title">Cập nhật thông tin khoa</h4>
             <p class="card-description">
             </p>
-            <form class="forms-sample" method="POST" action="<?= BASE_URL . '/khoa/save_edit'; ?>">
+            <form class="forms-sample" method="POST" id="form-edit" action="<?= BASE_URL . '/khoa/save_edit'; ?>">
                 <div class="form-group">
                     <label for="exampleInputName1">Tên khoa</label>
                     <input type="hidden" value="<?= $khoa->id; ?>" name="id" id="id">
@@ -20,3 +20,26 @@
         </div>
     </div>
 </div>
+<script type="module">
+    $("#form-edit").validate({
+        rules:{
+            "ten_khoa":{
+                required: true
+            },
+            "dien_thoai":{
+                required:true
+            }
+        },
+        messages:{
+            "ten_khoa":{
+                required: 'Tên khoa bắt buộc nhập'
+            },
+            "dien_thoai":{
+                required: 'Số điện thoại của khoa bắt buộc nhập'
+            }
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+</script>

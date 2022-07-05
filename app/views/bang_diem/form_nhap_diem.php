@@ -4,7 +4,7 @@
             <h4 class="card-title">Nhập điểm</h4>
             <p class="card-description">
             </p>
-            <form class="forms-sample" method="POST" action="<?= BASE_URL . '/danh-sach-diem/save_create'; ?>">
+            <form class="forms-sample" method="POST" id="form-add" action="<?= BASE_URL . '/danh-sach-diem/save_create'; ?>">
                 <div class="form-group">
                     <label for="ma_sv">Mã sinh viên</label>
                     <input type="text" class="form-control" id="ma_sv" name="ma_sv" placeholder="Mã sinh viên">
@@ -35,3 +35,25 @@
         </div>
     </div>
 </div>
+<script type="module">
+    $("#form-add").validate({
+        rules:{
+            "ma_sv":{
+                required: true,
+                minlength:7,
+                maxlength:7
+            }
+        },
+        messages:{
+            "ma_sv":{
+                required: 'Mã sinh viên bắt buộc nhập',
+                minlength: 'Mã sinh viên không hợp lệ',
+                maxlength: 'Mã sinh viên không hợp lệ'
+
+            }
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+</script>

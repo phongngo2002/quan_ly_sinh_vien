@@ -4,7 +4,7 @@
             <h4 class="card-title">Thêm mới sinh viên</h4>
             <p class="card-description">
             </p>
-            <form class="forms-sample" method="POST" action="<?= BASE_URL . '/sinh-vien/save-create'; ?>" enctype="multipart/form-data">
+            <form class="forms-sample" id="form-add" method="POST" action="<?= BASE_URL . '/sinh-vien/save-create'; ?>" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="gioi_tinh">Mã sinh viên</label>
                     <div class="">
@@ -116,7 +116,38 @@
             last += arr_ten[index];
         }
         console.log(first, last);
-        let string = last + '' + first + ma_sv.value;
+        let string = last+ '' + first +''+ ma_sv.value;
         ten_tai_khoan.value = removeVietnameseTones(string.toLowerCase());
     }
+
+</script>
+<script type="module">
+    $("#form-add").validate({
+        rules:{
+            "ho_dem":{
+                required: true
+            },
+            "ten":{
+                required:true
+            },
+            "ngay_sinh": {
+                required: true
+            }
+
+        },
+        messages:{
+            "ho_dem":{
+                required: 'Họ đệm bắt buộc nhập'
+            },
+            "ten":{
+                required: 'Tên bắt buộc nhập'
+            },
+            "ngay_sinh": {
+                required: 'Ngày sinh bắt buộc nhập'
+            }
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
 </script>

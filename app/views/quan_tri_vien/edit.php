@@ -4,7 +4,7 @@
             <h4 class="card-title">Thay đổi thông tin tài khoản quản trị</h4>
             <p class="card-description">
             </p>
-            <form class="forms-sample" method="POST" action="<?= BASE_URL . '/quan-tri-vien/save-edit'; ?>">
+            <form class="forms-sample" method="POST" id="form-edit" action="<?= BASE_URL . '/quan-tri-vien/save-edit'; ?>">
                 <div class="row p-0">
                     <input type="hidden" value="<?= $_GET['id']; ?>" name="id" id="id">
                     <input type="hidden" value="<?= $so_tk; ?>" id="so_tk">
@@ -79,4 +79,27 @@
 
         ten_tk.value = removeVietnameseTones((first + '' + last + '' + (so_tk)).toLowerCase());
     }
+</script>
+<script type="module">
+    $("#form-edit").validate({
+        rules:{
+            "ho_dem":{
+                required: true
+            },
+            "ten":{
+                required:true
+            }
+        },
+        messages:{
+            "ho_dem":{
+                required: 'Họ đệm bắt buộc nhập'
+            },
+            "ten":{
+                required: 'Tên bắt buộc nhập'
+            }
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
 </script>

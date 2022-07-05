@@ -36,16 +36,19 @@
                                     :
                                     ''
                                 ?>
-                                <form class="pt-2" method="POST" action="<?= BASE_URL . '/save-login'; ?>">
+                                <form class="pt-2" method="POST" id="form-login"
+                                     action="<?=BASE_URL.'/save-login';?>">
                                     <div class="form-group">
                                         <label for="ten_tai_khoan">Tên đăng nhập</label>
                                         <input type="text" class="form-control" id="ten_tai_khoan" name="ten_tai_khoan" placeholder="Tên đăng nhập">
                                         <i class="mdi mdi-account"></i>
+                                        <span style="color: red;display: block;margin-top: 8px" class="tb"></span>
                                     </div>
                                     <div class="form-group">
                                         <label for="mat_khau">Mật khẩu</label>
                                         <input type="password" class="form-control" id="mat_khau" name="mat_khau" placeholder="Mật khẩu">
                                         <i class="mdi mdi-eye"></i>
+                                        <span style="color: red;display: block;margin-top: 8px" class="tb"></span>
                                     </div>
                                     <div class="mt-5">
                                         <button class="btn btn-block btn-warning btn-lg font-weight-medium">Đăng Nhập</button>
@@ -74,7 +77,28 @@
     <script src="<?= BASE_URL; ?>\public\js\misc.js"></script>
     <script src="<?= BASE_URL; ?>\public\js\settings.js"></script>
     <script src="<?= BASE_URL; ?>\public\js\todolist.js"></script>
-    <!-- endinject -->
+<script>
+    const form = document.querySelector('#form-login');
+    const notifications = document.querySelectorAll('.tb');
+    form.addEventListener('submit',function (e){
+        e.preventDefault();
+        const username = document.querySelector('#ten_tai_khoan').value;
+        const password = document.querySelector('#mat_khau').value;
+        if(!username){
+            notifications[0].innerHTML = 'Tên tài khoản không được để trống';
+        }else{
+            notifications[0].innerHTML = '';
+        }
+        if(!password){
+            notifications[1].innerHTML = 'Mật khẩu không được để trống';
+        }else{
+            notifications[1].innerHTML = '';
+        }
+        if(username && password){
+            form.submit();
+        }
+    })
+</script>
 </body>
 
 </html>

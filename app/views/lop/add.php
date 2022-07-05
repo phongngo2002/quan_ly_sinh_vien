@@ -4,7 +4,7 @@
             <h4 class="card-title">Thêm mới lớp học</h4>
             <p class="card-description">
             </p>
-            <form class="forms-sample" method="POST" action="<?= BASE_URL . '/lop/save-create'; ?>">
+            <form class="forms-sample" id="form-add" method="POST" action="<?= BASE_URL . '/lop/save-create'; ?>">
                 <div class="form-group">
                     <label for="exampleInputName1">Tên lớp</label>
                     <input type="text" class="form-control" disabled value="Tự động">
@@ -42,3 +42,24 @@
         </div>
     </div>
 </div>
+
+<script type="module">
+    $("#form-add").validate({
+        rules:{
+            "si_so":{
+                required: true,
+                min:20
+            }
+
+        },
+        messages:{
+            "si_so":{
+                required: 'Sĩ số bắt buộc nhập',
+                min: 'Sĩ số bắt buộc lơn hơn 20'
+            }
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+</script>

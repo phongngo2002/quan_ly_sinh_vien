@@ -4,7 +4,7 @@
             <h4 class="card-title">Cập nhật thông tin môn học</h4>
             <p class="card-description">
             </p>
-            <form class="forms-sample" method="POST" action="<?= BASE_URL . '/mon-hoc/save_edit'; ?>">
+            <form class="forms-sample" id="form-edit" method="POST" action="<?= BASE_URL . '/mon-hoc/save_edit'; ?>">
                 <div class="form-group">
                     <label for="ten_mon_hoc">Môn học</label>
                     <input type="hidden" value="<?= $model->id; ?>" name="id" id="id">
@@ -20,3 +20,27 @@
         </div>
     </div>
 </div>
+<script type="module">
+    $("#form-edit").validate({
+        rules:{
+            "ten_mon_hoc":{
+                required: true
+            },
+            "mo_ta":{
+                required: true
+            }
+
+        },
+        messages:{
+            "ten_mon_hoc":{
+                required: 'Tên môn học bắt buộc nhập'
+            },
+            "mo_ta":{
+                required: 'Mô tả bắt buộc nhập'
+            }
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+</script>

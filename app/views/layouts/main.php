@@ -9,6 +9,12 @@
     <title>Victory Admin</title>
     <?php require_once '_css.php'; ?>
     <link rel="shortcut icon" href="images\favicon.png">
+    <style>
+        .error{
+            color: red;
+            margin-top: 4px;
+        }
+    </style>
 </head>
 
 <body>
@@ -205,6 +211,7 @@
     </div>
 
     <?php require_once '_js.php'; ?>
+
 </body>
 
 </html>

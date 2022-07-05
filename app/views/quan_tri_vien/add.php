@@ -4,7 +4,7 @@
             <h4 class="card-title">Thêm mới tài khoản quản trị</h4>
             <p class="card-description">
             </p>
-            <form class="forms-sample" method="POST" action="<?= BASE_URL . '/quan-tri-vien/save-create'; ?>">
+            <form class="forms-sample" method="POST" id="form-add" action="<?= BASE_URL . '/quan-tri-vien/save-create'; ?>">
                 <div class="row p-0">
                     <input type="hidden" value="<?= $so_tk; ?>" id="so_tk">
                     <div class="form-group col-6">
@@ -78,4 +78,27 @@
 
         ten_tk.value = removeVietnameseTones((first + '' + last + '' + (so_tk + 1)).toLowerCase());
     }
+</script>
+<script type="module">
+    $("#form-add").validate({
+        rules:{
+            "ho_dem":{
+                required: true
+            },
+            "ten":{
+                required:true
+            }
+        },
+        messages:{
+            "ho_dem":{
+                required: 'Họ đệm bắt buộc nhập'
+            },
+            "ten":{
+                required: 'Tên bắt buộc nhập'
+            }
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
 </script>
